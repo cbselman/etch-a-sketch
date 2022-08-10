@@ -1,4 +1,6 @@
-function addPixels(amount) {
+const DEFAULT_PIXELS = 16
+
+function createGrid(amount) {
     const container = document.getElementById("container")
     for (i = 0; i < amount; i++) {
         let row = document.createElement("div");
@@ -12,22 +14,31 @@ function addPixels(amount) {
     }
 }
 
-addPixels(16)
+createGrid(DEFAULT_PIXELS);
 
 const pixels = document.querySelectorAll('.pixel');
-let mouseIsDown = false;
+let mouseDown = false;
 const body = document.querySelector('body');
 
-document.body.onmousedown = () => (mouseIsDown = true);
-document.body.onmouseup = () => (mouseIsDown = false);
+document.body.onmousedown = () => (mouseDown = true);
+document.body.onmouseup = () => (mouseDown = false);
 
 pixels.forEach((pixel) => {
-    pixel.addEventListener('mouseover', colorChange);
-    pixel.addEventListener('mouseDown', colorChange);
+    pixel.addEventListener('mouseover', () => {
+        if (mouseDown == true){
+            pixel.className = 'pixelBlack';
+        }
+    })
 })
 
-function colorChange(e) {
-    if (mouseIsDown == true) {
-        e.target.className = 'pixelBlack';
-    }
+const resetBtn = document.getElementById("reset");
+
+resetBtn.addEventListener('click', resetGrid)
+
+function resetGrid() {
+    pixels.forEach((pixel) => {
+        pixel.className = "pixel";
+    })
 }
+
+let slider = document.getElementById('pixelCount')

@@ -16,9 +16,24 @@ function createGrid(amount) {
 
 createGrid(DEFAULT_PIXELS);
 
+// Moved reset functionalities up. Need to test if call order was issue.
+const resetBtn = document.getElementById("reset");
+
+resetBtn.addEventListener('click', resetGrid);
+
+function resetGrid() {
+    pixels.forEach((pixel) => {
+        pixel.className = 'pixel';
+    })
+}
+
+let slider = document.getElementById('pixelCount');
+let sliderNumber = document.getElementById('sliderCount')
+sliderNumber.innerText = `${slider.value} x ${slider.value}`
+// This chunk ends here
+
 const pixels = document.querySelectorAll('.pixel');
 let mouseDown = false;
-const body = document.querySelector('body');
 
 document.body.onmousedown = () => (mouseDown = true);
 document.body.onmouseup = () => (mouseDown = false);
@@ -30,15 +45,3 @@ pixels.forEach((pixel) => {
         }
     })
 })
-
-const resetBtn = document.getElementById("reset");
-
-resetBtn.addEventListener('click', resetGrid)
-
-function resetGrid() {
-    pixels.forEach((pixel) => {
-        pixel.className = "pixel";
-    })
-}
-
-let slider = document.getElementById('pixelCount')

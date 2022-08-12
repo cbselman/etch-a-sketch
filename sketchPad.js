@@ -25,11 +25,7 @@ function enableDraw() { //Enables the ability for pixels to change to color when
     pixels.forEach((pixel) => {
         pixel.addEventListener('mouseover', () => {
             if (mouseDown == true){
-                if (eraserOn == false) {
-                    pixel.style.backgroundColor = color;
-                } else {
-                    pixel.style.backgroundColor = 'white';
-                }
+                pixel.style.backgroundColor = color;
             }       
         })
     })
@@ -37,9 +33,6 @@ function enableDraw() { //Enables the ability for pixels to change to color when
 
 createGrid(DEFAULT_PIXELS);
 enableDraw(); 
-
-const resetBtn = document.getElementById("reset");
-resetBtn.addEventListener('click', resetGrid);
 
 let slider = document.getElementById('pixelCount');
 let sliderNumber = document.getElementById('sliderCount')
@@ -63,16 +56,21 @@ colorPicker.oninput = function() {
 }
 
 let eraserOn = false;
-const ERASEBTN = document.getElementById('eraser');
+const ERASEBTN = document.getElementById('eraser'); //Changes pen to eraser
 ERASEBTN.addEventListener('click', () => {
     eraserOn = true;
+    color = 'white';
     enableDraw();
     return;
 });
 
-const DRAWBTN = document.getElementById('pen');
+const DRAWBTN = document.getElementById('pen'); //Turns the pen back on
 DRAWBTN.addEventListener('click', () => {
     eraserOn = false
+    color = colorPicker.value;
     enableDraw();
     return;
 });
+
+const resetBtn = document.getElementById("reset");
+resetBtn.addEventListener('click', resetGrid);

@@ -33,11 +33,6 @@ main {
     flex: 1 0 auto
 }
 
-.pixelColor {
-    display: flex;
-    flex: 1 0 auto
-}
-
 .sliderContainer {
     display: flex;
     justify-content: space-around;

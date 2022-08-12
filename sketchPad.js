@@ -20,14 +20,17 @@ function resetGrid() {
     enableDraw();
 }
 
-function enableDraw() { //Enables the ability for pixels to change to selected color when click and dragging
+function enableDraw() { //Enables the ability for pixels to change to color when click and dragging
     const pixels = document.querySelectorAll('.pixel');
     pixels.forEach((pixel) => {
         pixel.addEventListener('mouseover', () => {
             if (mouseDown == true){
-                pixel.className = 'pixelColor';
-                pixel.style.backgroundColor = color;
-            }
+                if (eraserOn == false) {
+                    pixel.style.backgroundColor = color;
+                } else {
+                    pixel.style.backgroundColor = 'white';
+                }
+            }       
         })
     })
 }
@@ -55,5 +58,21 @@ colorPicker = document.getElementById("colorPicker");
 color = colorPicker.value;
 
 colorPicker.oninput = function() {
-    color = colorPicker.value
+    color = colorPicker.value;
+    enableDraw();
 }
+
+let eraserOn = false;
+const ERASEBTN = document.getElementById('eraser');
+ERASEBTN.addEventListener('click', () => {
+    eraserOn = true;
+    enableDraw();
+    return;
+});
+
+const DRAWBTN = document.getElementById('pen');
+DRAWBTN.addEventListener('click', () => {
+    eraserOn = false
+    enableDraw();
+    return;
+});

@@ -1,3 +1,9 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 main {
     cursor: unset;
 }
@@ -27,8 +33,13 @@ main {
     flex: 1 0 auto
 }
 
-.pixelBlack {
-    background-color: black;
+.pixelColor {
     display: flex;
     flex: 1 0 auto
 }
+
+.sliderContainer {
+    display: flex;
+    justify-content: space-around;
+}
+

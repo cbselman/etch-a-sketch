@@ -9,17 +9,21 @@
     <title>Etch-a-Sketch</title>
 </head>
 <body>
-    <h1>Etch-a-Sketch</h1>
+    <h1 id="pageTitle">Etch-a-Sketch</h1>
     <main>
-        <div id="container"></div>
-        <div class="sliderContainer">
-            <input type="range" min="2" max="100" value="16" class="slider" id="pixelCount">
-            <p id="sliderCount"></p>
+        <div id="btnBox">
+            <input type="color" id="colorPicker">
+            <button id="eraser">Eraser</button>
+            <button id="pen">Draw</button>
+            <button id="reset">Clear</button>
         </div>
-        <input type="color" id="colorPicker">
-        <button id="eraser">Eraser</button>
-        <button id="pen">Draw</button>
-        <button id="reset">Clear</button>
+        <div id="container">
+            <div id="grid"></div>
+            <div class="sliderContainer">
+                <input type="range" min="2" max="100" value="16" class="slider" id="pixelCount">
+                <p id="sliderCount"></p>
+            </div>
+        </div>
     </main>
 </body>
 </html>

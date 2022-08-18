@@ -1,5 +1,5 @@
 const DEFAULT_PIXELS = 16
-const container = document.getElementById("container")
+const container = document.getElementById("grid")
 
 function createGrid(amount) {
     for (i = 0; i < amount; i++) {
@@ -23,6 +23,7 @@ function resetGrid() {
 function enableDraw() { //Enables the ability for pixels to change to color when click and dragging
     const pixels = document.querySelectorAll('.pixel');
     pixels.forEach((pixel) => {
+        pixel.addEventListener('mousedown', () => pixel.style.backgroundColor = color);
         pixel.addEventListener('mouseover', () => {
             if (mouseDown == true){
                 pixel.style.backgroundColor = color;

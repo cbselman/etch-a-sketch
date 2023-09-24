@@ -32,6 +32,25 @@ function enableDraw() { //Enables the ability for pixels to change to color when
     })
 }
 
+function enableRainbow() { //Enables the ability for pixels to change to color when click and dragging
+    const pixels = document.querySelectorAll('.pixel');
+    pixels.forEach((pixel) => {
+        pixel.addEventListener('mousedown', () => pixel.style.backgroundColor = colorWave());
+        pixel.addEventListener('mouseover', () => {
+            if (mouseDown == true){
+                pixel.style.backgroundColor = colorWave();
+            }       
+        })
+    })
+}
+
+function colorWave() {
+    const r = Math.floor(Math.random() * 256);
+    const g = Math.floor(Math.random() * 256);
+    const b = Math.floor(Math.random() * 256);
+    return "rgb(" + r + "," + g + "," + b + ")";
+}
+
 createGrid(DEFAULT_PIXELS);
 enableDraw(); 
 
@@ -70,6 +89,13 @@ DRAWBTN.addEventListener('click', () => {
     eraserOn = false
     color = colorPicker.value;
     enableDraw();
+    return;
+});
+
+const RAINBTN = document.getElementById('rainbow'); //Turns the pen back on
+RAINBTN.addEventListener('click', () => {
+    eraserOn = false
+    enableRainbow();
     return;
 });
 

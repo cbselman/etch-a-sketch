@@ -12,7 +12,7 @@ body {
 #pageTitle {
     font-style: italic;
     font-size: 48px;
-    color: whitesmoke
+    color: whitesmoke;
 }
 
 main {
@@ -22,27 +22,30 @@ main {
 
 #btnBox {
     display: flex;
+    box-sizing: border-box;
     flex-direction: column;
     height: 480px;
     width: auto;
     justify-content: space-around;
-    margin: 20px;
+    padding: 20px;
 }
 
 #colorPicker {
-    height: 100px;
+    height: 10%;
     width: 100px;
     padding: 0;
     border: none;
     background-color: black;
     outline: solid black 5px;
+    border-radius: 5px;
 }
 
 button {
-    height: 100px;
+    height: 10%;
     width: 100px;
     font-size: 20px;
     outline: solid black 5px;
+    border-radius: 5px;
 }
 
 #container {
